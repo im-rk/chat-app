@@ -4,6 +4,8 @@ import cors from "cors"
 import http, { createServer } from "http"
 import { create } from "domain"
 import { connectDB } from "./lib/db"
+import userRouter from "./routes/userRoutes"
+import messageRouter from "./routes/messageRoutes"
 
 //create express app and HTTP server
 const app=express()
@@ -15,7 +17,8 @@ app.use(cors())
 app.use("/api/status",(req,res)=>{
     res.send("server is live")
 });
-
+app.use("/api/auth",userRouter);
+app.use("/api/message",messageRouter);
 await connectDB();
 
 const PORT=process.env.PORT || 5000;
