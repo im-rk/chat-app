@@ -67,7 +67,7 @@ export const markMessaageasSeen=async(req,res)=>{
     }
 }
 
-//send message to selected user
+//send message to selected user using the generated token using bcrypt
 export const sendMessage=async(req,res)=>{
     try{
         const {text,image}=req.body;
